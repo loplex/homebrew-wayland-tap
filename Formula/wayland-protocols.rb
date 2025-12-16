@@ -1,22 +1,32 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://docs.brew.sh/rubydoc/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class WaylandProtocols < Formula
   desc "Additional Wayland protocols"
   homepage "https://wayland.freedesktop.org"
-  url "https://gitlab.freedesktop.org/wayland/wayland-protocols/-/archive/1.46/wayland-protocols-1.46.tar.gz"
-  sha256 "83afedde1e63751578ba51b5f6c36052802f85634ed68be41ecfcc3a515ab03d"
+  url "https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/1.47/downloads/wayland-protocols-1.47.tar.xz"
+  sha256 "5fd4349bcbc9bab9a46f8cf77d1f434296a7a052c87440a094f63fcf62a58e20"
   license "MIT"
+
+  # livecheck do
+  #   url "https://wayland.freedesktop.org/releases.html"
+  #   regex(/href=.*?wayland-protocols[._-]v?(\d+(?:\.\d+)+)\.t/i)
+  # end
+
+  # bottle do
+  #   sha256 cellar: :any_skip_relocation, all: "391af10e2f49ee9eedd9f670df2f6449013acc437d36267895919313bf6ce69d"
+  # end
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkgconf" => [:build, :test]
+  # depends_on :linux
+  # depends_on "wayland"
 
-  # Additional dependency
-  # resource "" do
-  #   url ""
-  #   sha256 ""
-  # end
+  on_linux do
+    depends_on "wayland"
+  end
+
+  on_macos do
+    depends_on "wayland_xquartz"
+  end
 
   def install
     system "meson", "setup", "build", "-Dtests=false", *std_meson_args
@@ -27,17 +37,5 @@ class WaylandProtocols < Formula
   test do
     system "pkg-config", "--exists", "wayland-protocols"
     assert_equal 0, $CHILD_STATUS.exitstatus
-
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test wayland-protocols`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system bin/"program", "do", "something"`.
-    #system "false"
   end
 end
-
