@@ -25,7 +25,7 @@ class WaylandProtocols < Formula
   end
 
   on_macos do
-    depends_on "wayland_xquartz"
+    depends_on "loplex/wayland-tap/wayland"
   end
 
   def install

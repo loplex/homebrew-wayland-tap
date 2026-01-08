@@ -6,7 +6,7 @@ class Mesa < Formula
   url "https://archive.mesa3d.org/mesa-25.3.1.tar.xz"
   sha256 "059d0d985622f49588f01aa29152804f4da8ffe6add046e00a52923379c2d8da"
   
-  version  "25.3.1-wayland1"
+  version  "25.3.1-wayland2"
 
   # wayland support
   patch do
@@ -79,7 +79,7 @@ class Mesa < Formula
     depends_on :xcode => :build
     depends_on "llvm" => :build
     depends_on "loplex/wayland-tap/wayland-protocols" => :build
-    depends_on "loplex/wayland-tap/wayland_xquartz"
+    depends_on "loplex/wayland-tap/wayland"
   end
 
   on_linux do
