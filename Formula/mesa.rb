@@ -3,15 +3,15 @@ class Mesa < Formula
 
   desc "Graphics Library"
   homepage "https://www.mesa3d.org/"
-  url "https://archive.mesa3d.org/mesa-25.3.1.tar.xz"
-  sha256 "059d0d985622f49588f01aa29152804f4da8ffe6add046e00a52923379c2d8da"
+  url "https://archive.mesa3d.org/mesa-26.0.5.tar.xz"
+  sha256 "d229c9937d9a25ca0a8958c59f425174563d300ec42acbea2dbe84a055023368"
   
-  version  "25.3.1-wayland2"
+  version  "26.0.5-wayland2"
 
   # wayland support
   patch do
-    url "https://gitlab.freedesktop.org/lopin/mesa/-/commit/e10ddd91d224b8043318881bf696ae42e300bc07.diff"
-    sha256 "b87976b8e79a93b0896a37fda184a161462849bf5d1ac406d88722f51c424c99"
+    url "https://gitlab.freedesktop.org/lopin/mesa/-/commit/409d9dfb4a8a0418a9aa2ef93e8c05270da8db47.diff"
+    sha256 "e5a661b7cc657751d18322fb9f5b0bca558a24c99450f8b27785f71884fe9905"
   end
   
   license all_of: [
