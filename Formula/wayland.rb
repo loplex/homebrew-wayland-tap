@@ -2,8 +2,8 @@ class Wayland < Formula
   desc "Core Wayland window system code and protocol"
   homepage "https://wayland.freedesktop.org"
   license "MIT"
-  url "https://gitlab.freedesktop.org/lopin/wayland.git", using: :git, branch: "macos", revision: 'afdcd888beb34b80488a0209a080766fd48755e3'
-  version "1.24.90-lopin"
+  url "https://gitlab.freedesktop.org/lopin/wayland.git", using: :git, branch: "macos", revision: '5bf30a3e7e1dd3f77485a57a16b896c0dcffa13e'
+  version "1.24.91-lopin1"
   #head "https://gitlab.freedesktop.org/lopin/wayland.git"
 
   depends_on "meson" => [:build, :test]
@@ -13,7 +13,8 @@ class Wayland < Formula
   depends_on "docbook" => :build
   depends_on "xmlto" => :build
   depends_on "graphviz" => :build
-  
+  depends_on "mdbook" => :build
+
   depends_on "epoll-shim"
 
   def install
